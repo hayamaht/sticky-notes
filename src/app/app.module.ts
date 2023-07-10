@@ -9,10 +9,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PrimengModule } from './shared/primeng/primeng.module';
 import { enviroment } from 'src/envs/environment';
+import { HeaderComponent } from './components/header/header.component';
+import { HomePage } from './pages/home/home.page';
+import { FooterComponent } from './components/footer/footer.component';
+import { StickyPostComponent } from './components/sticky-post/sticky-post.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    HomePage,
+    FooterComponent,
+    StickyPostComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,18 @@
+<main class="container mx-auto my-4">
+  <div class="grid grid-cols-2 gap-2 justify-items-center
+    sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
+    xl:grid-cols-6">
+    <a routerLink="/new-sticky"
+      class="btn w-40 h-40 p-0 m-0 bg-gray-300"
+    >
+      <div class="rounded-full bg-gray-200 p-5">
+        <i class="pi pi-plus text-gray-400"></i>
+      </div>
+    </a>
+    <div *ngFor="let post of posts">
+      <app-sticky-post
+        content="{{ post.content }}"
+      />
+    </div>
+  </div>
+</main>
