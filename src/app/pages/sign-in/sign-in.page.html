@@ -1,0 +1,51 @@
+<main class="p-10">
+  <div class="container mx-auto">
+    <h2 class="text-3xl font-bold text-center mt-5 mb-20">Sing In</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="flex justify-center">
+        <div class="card bg-base-200 shadow-lg max-w-lg min-w-max w-2/3">
+          <figure class="mb-10">
+            <div class="-top-8 absolute z-50">
+              <i class="pi pi-user text-4xl bg-primary rounded-full p-5 "></i>
+            </div>
+          </figure>
+          <div class="card-body">
+            <app-input-text
+              [control]="fc['email']"
+              [showErrorsWhen]="isSubmitted"
+              type="email"
+              label="Email"
+            />
+
+            <app-input-text
+              [control]="fc['password']"
+              [showErrorsWhen]="isSubmitted"
+              type="password"
+              label="Password"
+            />
+
+            <button type="submit" class="btn btn-primary">
+              Sign In
+            </button>
+
+            <div class="text-center my-4">
+              New User?
+              <a routerLink="/register"
+                class="link link-primary"
+              >Register here</a>
+            </div>
+
+            <div class="divider">OR</div>
+
+            <button type="button"
+              (click)="signInGoogle()"
+              class="btn bg-blue-400 p-2">
+              <i class="pi pi-google"></i>
+              Sign in with Google
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</main>

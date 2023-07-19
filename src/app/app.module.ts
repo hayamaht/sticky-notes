@@ -13,6 +13,11 @@ import { HeaderComponent } from './components/header/header.component';
 import { HomePage } from './pages/home/home.page';
 import { FooterComponent } from './components/footer/footer.component';
 import { StickyPostComponent } from './components/sticky-post/sticky-post.component';
+import { SignInPage } from './pages/sign-in/sign-in.page';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InputContainerComponent } from './components/input-container/input-container.component';
+import { InputValidationComponent } from './components/input-validation/input-validation.component';
+import { InputTextComponent } from './components/input-text/input-text.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +25,19 @@ import { StickyPostComponent } from './components/sticky-post/sticky-post.compon
     HeaderComponent,
     HomePage,
     FooterComponent,
-    StickyPostComponent
+    StickyPostComponent,
+    SignInPage,
+    InputContainerComponent,
+    InputValidationComponent,
+    InputTextComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+
     PrimengModule,
 
     provideFirebaseApp(() => initializeApp(enviroment.firebase)),
