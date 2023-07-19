@@ -9,7 +9,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class SignInPage {
   formBuilder = inject(FormBuilder);
 
-  form: FormGroup = this.formBuilder.group({
+  signInForm: FormGroup = this.formBuilder.group({
     email: ['', [
       Validators.required, Validators.email
     ]],
@@ -21,7 +21,7 @@ export class SignInPage {
   isSubmitted = false;
 
   get fc() {
-    return this.form.controls;
+    return this.signInForm.controls;
   }
 
   signInGoogle() {

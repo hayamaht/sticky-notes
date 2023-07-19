@@ -18,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputContainerComponent } from './components/input-container/input-container.component';
 import { InputValidationComponent } from './components/input-validation/input-validation.component';
 import { InputTextComponent } from './components/input-text/input-text.component';
+import { RegisterPage } from './pages/register/register.page';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { InputTextComponent } from './components/input-text/input-text.component
     SignInPage,
     InputContainerComponent,
     InputValidationComponent,
-    InputTextComponent
+    InputTextComponent,
+    RegisterPage
   ],
   imports: [
     BrowserModule,
