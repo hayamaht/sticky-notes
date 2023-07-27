@@ -1,5 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { Auth, authState, user, signInWithPopup, GoogleAuthProvider } from '@angular/fire/auth';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -7,9 +9,10 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./sign-in.page.scss']
 })
 export class SignInPage {
-  formBuilder = inject(FormBuilder);
+  #formBuilder = inject(FormBuilder);
+  #authService = inject(AuthService);
 
-  signInForm: FormGroup = this.formBuilder.group({
+  signInForm: FormGroup = this.#formBuilder.group({
     email: ['', [
       Validators.required, Validators.email
     ]],
@@ -26,6 +29,7 @@ export class SignInPage {
 
   signInGoogle() {
     console.log('Google!');
+    this.#authService.signInWithGogle();
   }
 
   onSubmit() {
