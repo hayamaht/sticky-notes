@@ -10,25 +10,25 @@ const SN_USER = 'stickynotes-user'
 })
 export class AuthService {
   #auth = inject(Auth);
-  #user = user(this.#auth);
   #firestore = inject(Firestore);
   #router = inject(Router);
 
+  #user$ = user(this.#auth);
+
   get user$() {
-    return this.#user;
+    return this.#user$;
   }
 
-  signInWithGogle() {
-    const p = new GoogleAuthProvider();
-    signInWithRedirect(this.#auth, p);
-    return getRedirectResult(this.#auth).then(result => {
-      if (!result) {
-        this.#router.navigateByUrl('/sign-in');
-        return;
-      }
+  getUserResult() {
+    getRedirectResult(this.#auth).then(result => {
+      if (!result) return;
       this._setUserData(result!.user);
       this.#router.navigateByUrl('/');
     });
+  }
+
+  signInWithGogle() {
+    signInWithRedirect(this.#auth, new GoogleAuthProvider());
   }
 
   signOut() {
@@ -39,7 +39,6 @@ export class AuthService {
   }
 
   private _setUserData(user: User) {
-    console.log(user);
     const userRef = doc(this.#firestore, `users/${user.uid}`);
     const userData = {
       uid: user.uid,
@@ -47,8 +46,9 @@ export class AuthService {
       displayName: user.displayName,
       photoURL: user.photoURL,
       emailVerified: user.emailVerified,
-      roles: ['guest']
+      roles: ['guest'],
+      timestamp: new Date().getTime(),
     }
-    return setDoc(userRef, userData);
+    return setDoc(userRef, {userData}, { merge: true });
   }
 }
